@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/longbridgeapp/sqlparser"
+	"github.com/jiushen/sqlparser"
 )
 
 func TestLexer_Lex(t *testing.T) {

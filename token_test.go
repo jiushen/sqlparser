@@ -3,7 +3,7 @@ package sqlparser_test
 import (
 	"testing"
 
-	"github.com/longbridgeapp/sqlparser"
+	"github.com/jiushen/sqlparser"
 )
 
 func TestPos_String(t *testing.T) {

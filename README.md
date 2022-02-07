@@ -1,13 +1,13 @@
 # SQLParser
 
-[![Go](https://github.com/longbridgeapp/sqlparser/actions/workflows/go.yml/badge.svg)](https://github.com/longbridgeapp/sqlparser/actions/workflows/go.yml)
+[![Go](https://github.com/jiushen/sqlparser/actions/workflows/go.yml/badge.svg)](https://github.com/jiushen/sqlparser/actions/workflows/go.yml)
 
 A SQL parser.
 
 ## Installation
 
 ```bash
-go get github.com/longbridgeapp/sqlparser
+go get github.com/jiushen/sqlparser
 ```
 
 ## Usage
