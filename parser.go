@@ -467,6 +467,45 @@ func (p *Parser) parseDeleteStatement() (_ *DeleteStatement, err error) {
 		}
 	}
 
+	// Parse ORDER BY clause.
+	if p.peek() == ORDER {
+		p.lex()
+		if p.peek() != BY {
+			return &stmt, p.errorExpected(p.pos, p.tok, "BY")
+		}
+		p.lex()
+
+		for {
+			term, err := p.parseOrderingTerm()
+			if err != nil {
+				return &stmt, err
+			}
+			stmt.OrderBy = append(stmt.OrderBy, term)
+
+			if p.peek() != COMMA {
+				break
+			}
+			p.lex()
+		}
+	}
+
+	// Parse LIMIT/OFFSET clause.
+	// The offset is optional. Can be specified with COMMA or OFFSET.
+	// e.g. "LIMIT 1 OFFSET 2" or "LIMIT 1, 2"
+	if p.peek() == LIMIT {
+		p.lex()
+		if stmt.Limit, err = p.ParseExpr(); err != nil {
+			return &stmt, err
+		}
+
+		if tok := p.peek(); tok == OFFSET || tok == COMMA {
+			p.lex()
+			if stmt.Offset, err = p.ParseExpr(); err != nil {
+				return &stmt, err
+			}
+		}
+	}
+
 	return &stmt, nil
 }
 

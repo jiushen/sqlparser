@@ -748,8 +748,8 @@ type UpdateStatement struct {
 	CursorName *Ident
 
 	OrderBy []*OrderingTerm // terms of ORDER BY clause
-	Limit  Expr
-	Offset Expr // offset expression
+	Limit   Expr
+	Offset  Expr // offset expression
 
 	OutputExpressions *OutputNames
 }
@@ -812,6 +812,10 @@ type DeleteStatement struct {
 
 	Condition  Expr
 	CursorName *Ident
+
+	OrderBy []*OrderingTerm // terms of ORDER BY clause
+	Limit   Expr
+	Offset  Expr // offset expression
 
 	OutputExpressions *OutputNames
 }
